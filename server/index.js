@@ -7,13 +7,14 @@ const connectDb = require("./database/connectDb");
 const User = require('./database/models/Student');
 const instructorRouter = require('./routes/instructorRoutes');
 const authRouter = require('./routes/authRoutes');
+const cors = require('cors');
 
 const MONGO_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT || 3000;
 
 // JSON PARSER
 app.use(express.json());
-
+app.use(cors());
 
 // ROUTERS
 app.use('/api/v1/instructor', instructorRouter);

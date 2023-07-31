@@ -20,8 +20,8 @@ const instructorLogin = async (req, res) => {
   const token = generateInstructorToken(instructor._id);
 
   instructor.password = undefined;
-
-  res.status(200).send({ user: instructor, token: token });
+  const user = { ...(instructor._doc), role: 'instructor' };
+  res.status(200).send({ user: user, token: token });
 }
 
 const studentSignup = async (req, res) => {
@@ -42,8 +42,8 @@ const studentLogin = async (req, res) => {
   const token = generateStudentToken(student._id);
 
   student.password = undefined;
-
-  res.status(200).send({ user: student, token: token });
+  const user = { ...(student._doc), role: 'student' };
+  res.status(200).send({ user: user, token: token });
 }
 
 

@@ -2,10 +2,11 @@ const Course = require("../database/models/Course");
 const Lesson = require("../database/models/Lesson");
 const Module = require("../database/models/Module");
 const Quiz = require("../database/models/Quiz");
+
+
 // ---------------------------------------------------
 // COURSE CONTROLLERS
 // ---------------------------------------------------
-
 
 const fetchCourse = async (req, res) => {
   // extract the instructor id and fetch the courses
@@ -162,7 +163,6 @@ const editQuiz = async (req, res) => {
 
   res.status(200).send(updatedQuiz);
 }
-
 
 
 
