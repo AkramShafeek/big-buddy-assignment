@@ -19,5 +19,5 @@ const moduleSchema = mongoose.Schema({
   }]
 });
 
-const Course = mongoose.model('courses', moduleSchema);
-module.exports = Course;
+const Module = mongoose.model('modules', moduleSchema);
+module.exports = Module;

@@ -6,6 +6,7 @@ const app = express();
 const connectDb = require("./database/connectDb");
 const User = require('./database/models/Student');
 const instructorRouter = require('./routes/instructorRoutes');
+const authRouter = require('./routes/authRoutes');
 
 const MONGO_URI = process.env.MONGO_URI;
 const PORT = process.env.PORT || 3000;
@@ -15,8 +16,8 @@ app.use(express.json());
 
 
 // ROUTERS
-app.use('/api/v1/instructor',instructorRouter);
-
+app.use('/api/v1/instructor', instructorRouter);
+app.use('/api/v1/auth', authRouter);
 
 // ERROR HANDLERS
 app.use((err, req, res, next) => {
