@@ -1,3 +1,4 @@
+const { generateInstructorToken, generateStudentToken } = require("../auth/generateToken");
 const Instructor = require("../database/models/Instructor");
 const Student = require("../database/models/Student");
 
@@ -10,7 +11,17 @@ const instructorSignup = async (req, res) => {
 }
 
 const instructorLogin = async (req, res) => {
+  const { email, password } = req.body;
 
+  const instructor = await Instructor.findOne({ email: email });
+  if (!instructor || instructor.password !== password)
+    throw new Error("Invalid username or password");
+
+  const token = generateInstructorToken(instructor._id);
+
+  instructor.password = undefined;
+
+  res.status(200).send({ user: instructor, token: token });
 }
 
 const studentSignup = async (req, res) => {
@@ -22,7 +33,17 @@ const studentSignup = async (req, res) => {
 }
 
 const studentLogin = async (req, res) => {
+  const { email, password } = req.body;
 
+  const student = await Student.findOne({ email: email });
+  if (!student || student.password !== password)
+    throw new Error("Invalid username or password");
+
+  const token = generateStudentToken(student._id);
+
+  student.password = undefined;
+
+  res.status(200).send({ user: student, token: token });
 }
 
 

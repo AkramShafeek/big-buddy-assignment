@@ -4,11 +4,12 @@ const { fetchCourse, addCourse, editCourse, deleteCourse } = require('../control
 const { addModule, editModule, deleteModule, fetchModule } = require('../controllers/instructorController');
 const { addQuiz, editQuiz, deleteQuiz, fetchQuiz } = require('../controllers/instructorController');
 const { addLesson, editLesson, deleteLesson, fetchLesson } = require('../controllers/instructorController');
+const { instructorAuthMiddleware } = require('../auth/authMiddleware');
 
-router.route('/getCourse').get(fetchCourse);
-router.route('/addCourse').post(addCourse);
-router.route('/editCourse').put(editCourse);
-router.route('/deleteCourse').delete(deleteCourse);
+router.route('/getCourse').get(instructorAuthMiddleware,fetchCourse);
+router.route('/addCourse').post(instructorAuthMiddleware,addCourse);
+router.route('/editCourse').put(instructorAuthMiddleware,editCourse);
+router.route('/deleteCourse').delete(instructorAuthMiddleware,deleteCourse);
 
 router.route('/getModule').get(fetchModule);
 router.route('/addModule').post(addModule);
