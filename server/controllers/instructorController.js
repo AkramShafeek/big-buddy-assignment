@@ -12,6 +12,12 @@ const fetchCourse = async (req, res) => {
   // extract the instructor id and fetch the courses
   // created by this instructor only
   const courses = await Course.find();
+  await Module.populate(courses, { path: 'modules' });
+  // courses.modules.forEach(async (module) => {
+  //   console.log(module);
+  // })
+  await Lesson.populate(courses, { path: 'modules.lessons' });
+  await Quiz.populate(courses, { path: 'modules.quizzes' });
   res.status(200).send(courses);
 }
 

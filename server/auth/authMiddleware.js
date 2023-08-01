@@ -2,6 +2,7 @@ const jwt = require('jsonwebtoken');
 const Instructor = require('../database/models/Instructor');
 
 const instructorAuthMiddleware = async (req, res, next) => {
+  console.log("Reached authentication middleware")
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith('Bearer ')) {

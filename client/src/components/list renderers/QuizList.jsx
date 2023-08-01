@@ -3,9 +3,9 @@ import EditRoundedIcon from '@mui/icons-material/EditRounded';
 import { DeleteRounded } from "@mui/icons-material";
 import { useTheme } from "@emotion/react";
 
-const LessonList = (props) => {
+const QuizList = (props) => {
   const { list } = props;
-  const { palette } = useTheme();  
+  const { palette } = useTheme();
   return (
     <>
       {list?.map((element, index) => {
@@ -13,7 +13,7 @@ const LessonList = (props) => {
           display: 'flex',
           justifyContent: 'space-between',
           padding: '5px 20px',
-          boxSizing: 'border-box', 
+          boxSizing: 'border-box',
           borderRadius: '6px',
           backgroundColor: index % 2 === 0 && palette.neutral.light,
         }}>
@@ -21,23 +21,23 @@ const LessonList = (props) => {
             width: '100%',
             borderRadius: '6px',
             padding: '10px',
-            boxSizing: 'border-box',            
+            boxSizing: 'border-box',
           }}>
             {element.name}
           </Box>
           <IconButton>
-            <EditRoundedIcon color="primary"/>
+            <EditRoundedIcon color="primary" />
           </IconButton>
           <IconButton>
-            <DeleteRounded color="error"  />
+            <DeleteRounded color="error" />
           </IconButton>
         </Box>)
       })}
-      {list.length === 0 && <div>No lessons</div>}
+      {list.length === 0 && <div>No quizzes</div>}
     </>
   )
 }
-LessonList.defaultProps = {
+QuizList.defaultProps = {
   list: []
 }
-export default LessonList;
+export default QuizList;

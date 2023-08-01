@@ -1,22 +1,25 @@
-import { Box, Paper, Tab, Tabs } from "@mui/material";
-import { useState } from "react";
+import { Box, Paper, Tab, Tabs, selectClasses } from "@mui/material";
+import { useEffect, useState } from "react";
 import Enrollments from "../components/Enrollments";
 import CourseModules from "../components/CourseModules";
 import CourseProgress from "../components/CourseProgress";
+import { useDispatch } from "react-redux";
+import { selectCourse } from "../redux/features/courseSlice";
+import { useTheme } from "@emotion/react";
 
 const ManageCourse = () => {
   const [value, setValue] = useState("enrollments");
-
+  const dispatch = useDispatch()
+  const { palette } = useTheme();
   const handleChange = (event, newValue) => {
     setValue(newValue);
   }
+
   return (
     <Box sx={{
       width: '100%',
-      height: '100%',
-      backgroundColor: 'aliceblue',
-      borderRadius: '10px',
-      padding: '20px 10px',
+      height: '100%',      
+      borderRadius: '10px',      
       boxSizing: 'border-box',
       position: 'relative',
       display: 'flex',
@@ -25,7 +28,7 @@ const ManageCourse = () => {
     }}>
       <Paper sx={{
         width: "100%",
-        backgroundColor: 'beige',
+        backgroundColor: palette.primary.light,
         padding: '10px 20px',
         boxSizing: 'border-box',
         borderRadius: '10px'
@@ -39,7 +42,7 @@ const ManageCourse = () => {
 
       <Box sx={{
         width: "100%",
-        backgroundColor: 'beige',
+        backgroundColor: palette.background.alt,
         padding: '10px 20px',
         boxSizing: 'border-box',
         borderRadius: '10px',

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import CourseList from "./list renderers/CourseList";
 import { Box, Button, Fab, Typography } from "@mui/material";
+import { useSelector } from "react-redux";
 
 const CourseTable = () => {
 
   const [courses, setCourse] = useState([]);
+  const courseList = useSelector((store) => store.course.courseList);
   const sampleArr = [1, 2, 3, 4, 5, 6, 7, 1, 2, 3, 4, 5, 6, 7];
   useEffect(() => {
     // fetch the courses here
@@ -29,7 +31,7 @@ const CourseTable = () => {
           </Typography>
           <Button variant="contained" color="secondary" disableElevation>Add courses</Button>
         </Box>
-        <CourseList list={sampleArr} targetDetails={'quizzes'}/>
+        <CourseList list={courseList} targetDetails={'quizzes'} />
       </Box>
     </Box>
   )
