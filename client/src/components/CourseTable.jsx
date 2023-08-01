@@ -29,7 +29,7 @@ const CourseTable = () => {
           </Typography>
           <Button variant="contained" color="secondary" disableElevation>Add courses</Button>
         </Box>
-        <CourseList list={sampleArr} />
+        <CourseList list={sampleArr} targetDetails={'quizzes'}/>
       </Box>
     </Box>
   )

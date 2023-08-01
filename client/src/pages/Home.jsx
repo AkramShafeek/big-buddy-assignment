@@ -13,7 +13,9 @@ const Home = () => {
       minHeight: '100%',      
     }}>
       <Navbar />
-      <Outlet />
+      <Box sx={{ width: '100%', height: '100%' }}>
+        <Outlet />
+      </Box>
     </Box>
   )
 }
