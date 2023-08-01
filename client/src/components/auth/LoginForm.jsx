@@ -6,6 +6,7 @@ import { useState } from "react";
 import * as yup from "yup"
 import { useDispatch } from "react-redux"
 import { setUserInfo } from "../../redux/features/userSlice";
+import { useNavigate } from "react-router-dom";
 
 const MyInputText = (props) => {
   const [field, meta] = useField(props);
@@ -30,6 +31,7 @@ const StudentLoginForm = ({ value }) => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const initialValues = {
     email: "",
@@ -50,6 +52,7 @@ const StudentLoginForm = ({ value }) => {
       const response = await axios.post(apiUrl, { ...values });
       console.log(response.data);
       dispatch(setUserInfo(response.data));
+      navigate("home")
     } catch (error) {
       console.log(error.response.data);
       setIsError(true);

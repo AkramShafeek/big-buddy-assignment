@@ -18,8 +18,8 @@ const ManageCourse = () => {
   return (
     <Box sx={{
       width: '100%',
-      height: '100%',      
-      borderRadius: '10px',      
+      height: '100%',
+      borderRadius: '10px',
       boxSizing: 'border-box',
       position: 'relative',
       display: 'flex',
@@ -28,15 +28,26 @@ const ManageCourse = () => {
     }}>
       <Paper sx={{
         width: "100%",
-        backgroundColor: palette.primary.light,
+        backgroundColor: palette.primary.main,
         padding: '10px 20px',
         boxSizing: 'border-box',
         borderRadius: '10px'
       }}>
-        <Tabs value={value} onChange={handleChange} centered>
-          <Tab className="tab" value={"enrollments"} label="Enrollments"></Tab>
-          <Tab className="tab" value={"course modules"} label="Course modules"></Tab>
-          <Tab className="tab" value={"course progress"} label="Course progress"></Tab>
+        <Tabs value={value} onChange={handleChange} centered TabIndicatorProps={{
+          style: { background: "white", color: "white" }
+        }} sx={{ ".Mui-selected": { color: 'white' } }}>
+          <Tab className="tab" value={"enrollments"} label="Enrollments" sx={{
+            color: palette.primary.light, fontWeight: '600',
+            '&.Mui-selected': { color: 'white' }
+          }}></Tab>
+          <Tab className="tab" value={"course modules"} label="Course modules" sx={{
+            color: palette.primary.light, fontWeight: '600',
+            '&.Mui-selected': { color: 'white' }
+          }}></Tab>
+          <Tab className="tab" value={"course progress"} label="Course progress" sx={{
+            color: palette.primary.light, fontWeight: '600',
+            '&.Mui-selected': { color: 'white' }
+          }}></Tab>
         </Tabs>
       </Paper>
 
@@ -46,8 +57,7 @@ const ManageCourse = () => {
         padding: '10px 20px',
         boxSizing: 'border-box',
         borderRadius: '10px',
-        height: '65vh',
-        overflowY: 'scroll'
+        minHeight: '65vh',        
       }}>
         {value === "enrollments" && <Enrollments />}
         {value === "course modules" && <CourseModules />}

@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Divider } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from "react";
 import ModuleDetails from "../ModuleDetails";
@@ -25,24 +25,26 @@ const CourseList = ({ list, targetDetails }) => {
           <div key={element._id}>
             <Accordion expanded={expanded === index} onChange={() => handleChange(index)}
               sx={{
-                backgroundColor: index % 2 === 0 && palette.neutral.light,
+                backgroundColor: palette.primary.light,
                 boxShadow: 'none'
               }}>
 
               <AccordionSummary expandIcon={<ExpandMoreIcon />} sx={{ boxShadow: 'none' }}>
-                <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between',alignItems:'center', padding: '0px 40px' }}>
+                <Box sx={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0px 30px', fontWeight: '600', color: palette.primary.main }}>
                   {element.name}
-                  <Button variant="contained" onClick={() => { dispatch(selectCourse(element)); navigate("manageCourse") }} disableElevation>Manage Course</Button>
+                  <Button variant="contained" sx={{ color: 'white', padding:'12px' }} onClick={() => { dispatch(selectCourse(element)); navigate("manageCourse") }} disableElevation>Manage Course</Button>
                 </Box>
               </AccordionSummary>
               <AccordionDetails>
-                {targetDetails === "modules" ? <ModuleDetails details={"module details"} /> : ""}
+                <Divider sx={{ marginBottom: '20px' }} />
+                {targetDetails === "modules" ? <ModuleDetails details={element.modules} /> : ""}
                 {targetDetails === "quizzes" ? <QuizDetails details={"quiz details"} /> : ""}
               </AccordionDetails>
             </Accordion>
           </div>
         )
       })}
+      
     </div>
   )
 }

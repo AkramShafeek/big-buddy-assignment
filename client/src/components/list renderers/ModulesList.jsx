@@ -17,18 +17,16 @@ const ModulesList = ({ list }) => {
           padding: '20px',
           boxSizing: 'border-box',
           borderRadius: '10px',
-          // backgroundColor: palette.primary.light,
+          backgroundColor: palette.primary.light,
           display: 'flex',
           flexDirection: 'column',
-          gap: '20px'
+          gap: '10px'
         }}>
           <Box sx={{ display: 'flex', justifyContent: 'space-between', padding: '0px 30px', alignItems: 'center' }}>
             <Box><Typography variant="h5" fontWeight="600"> {element.name} </Typography></Box>
             <Button onClick={() => setExpanded(expanded === index ? -1 : index)}>{expanded === index ? "Collapse" : "Expand"}</Button>
           </Box>
-          <Collapse in={expanded === index} sx={{
-
-          }}>
+          <Collapse in={expanded === index}>
             <Box sx={{
               display: 'flex',
               flexDirection: 'column',
@@ -47,7 +45,7 @@ const ModulesList = ({ list }) => {
               <Module module={element} />
             </Box>
           </Collapse>
-          <Divider />
+          {/* <Divider /> */}
         </Box>)
       })}
     </Box>

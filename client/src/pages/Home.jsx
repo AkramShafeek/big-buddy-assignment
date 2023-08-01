@@ -10,7 +10,8 @@ const Home = () => {
       display: 'flex',
       flexDirection: 'column',
       gap: '10px',
-      minHeight: '100%',      
+      height: '100%',
+      overflowY: 'scroll'
     }}>
       <Navbar />
       <Box sx={{ width: '100%', height: '100%' }}>

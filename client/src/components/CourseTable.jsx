@@ -31,7 +31,7 @@ const CourseTable = () => {
           </Typography>
           <Button variant="contained" color="secondary" disableElevation>Add courses</Button>
         </Box>
-        <CourseList list={courseList} targetDetails={'quizzes'} />
+        <CourseList list={courseList} targetDetails={'modules'} />
       </Box>
     </Box>
   )
